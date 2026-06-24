@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMTS 2026 台灣參展商目錄 | Premium Marketing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Montserrat:wght@700;900&display=swap');
+
+        :root {
+            --sky-dark: #0277BD;
+            --sky-main: #039BE5;
+            --sky-light: #81D4FA;
+            --sky-pale: #E1F5FE;
+            --text-dark: #014361;
+            --text-muted: #546E7A;
+            
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --glass-highlight: inset 0 0 20px rgba(255, 255, 255, 0.5);
+            --glass-shadow: 0 8px 32px rgba(3, 155, 229, 0.12);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #E1F5FE, #B3E5FC, #81D4FA, #E1F5FE);
+            background-size: 400% 400%;
+            animation: liquidSky 15s ease infinite;
+            position: relative;
+        }
+
+        @keyframes liquidSky {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes textGradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .skyline-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40vh; 
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Chicago_skyline_silhouette.svg');
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-size: 100vw auto; 
+            filter: invert(47%) sepia(94%) saturate(1682%) hue-rotate(167deg) brightness(98%) contrast(96%) opacity(0.12);
+            z-index: 0; 
+            pointer-events: none; 
+        }
+
+        /* 導覽列 */
+        .glass-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--sky-dark);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links > a, .dropdown { margin-left: 35px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--sky-main); }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown .dropbtn { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            margin-top: 20px; background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 12px; box-shadow: 0 8px 32px rgba(3, 155, 229, 0.15);
+            min-width: 320px; z-index: 1000; padding: 10px 0;
+        }
+        .dropdown::after { content: ''; position: absolute; width: 100%; height: 20px; bottom: -20px; left: 0; }
+        .dropdown:hover .dropdown-content { display: block; animation: dropFadeIn 0.3s forwards; }
+        @keyframes dropFadeIn { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+        .dropdown-content a {
+            display: block; padding: 15px 25px; font-size: 14px; color: var(--text-dark);
+            text-align: center; font-weight: 600; transition: all 0.3s ease; margin-left: 0;
+        }
+        .dropdown-content a:hover { background: rgba(3, 155, 229, 0.1); color: var(--sky-main); }
+
+        /* 橫幅 */
+        .hero-banner {
+            width: 100%; height: 45vh; min-height: 350px; position: relative;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            box-shadow: 0 4px 30px rgba(2, 119, 189, 0.2); z-index: 10; margin-top: 70px; 
+        }
+        .hero-banner::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(3,155,229,0.3) 0%, rgba(2,119,189,0.7) 100%); z-index: 1;
+        }
+        .hero-banner img { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+        .hero-content {
+            position: relative; z-index: 2; text-align: center; padding: 40px 60px;
+            background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif; font-size: 48px; margin: 0 0 10px 0;
+            color: #FFFFFF; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .hero-content p { font-size: 16px; letter-spacing: 2px; color: #E1F5FE; margin: 0; text-transform: uppercase; font-weight: 600; }
+
+        .container { max-width: 1400px; margin: 0 auto 60px; padding: 0 20px; position: relative; z-index: 10; }
+
+        /* 三大類項目名稱 - 恢復動態特效 */
+        .section-title {
+            font-family: 'Montserrat', sans-serif; font-size: 30px; padding-bottom: 15px;
+            margin-bottom: 40px; margin-top: 60px; text-transform: uppercase; letter-spacing: 2px;
+            position: relative; font-weight: 900;
+            background: linear-gradient(90deg, var(--sky-dark), var(--sky-main), #81D4FA, var(--sky-dark));
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradientFlow 6s ease-in-out infinite;
+        }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(3, 155, 229, 0.2); }
+        .section-title::before {
+            content: ''; position: absolute; bottom: -1px; left: 0; width: 150px; height: 4px;
+            background: var(--sky-main); border-radius: 2px; z-index: 1;
+        }
+
+        .info-panel {
+            background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border);
+            border-radius: 20px; padding: 40px 50px; box-shadow: var(--glass-shadow);
+            color: var(--text-dark); font-size: 18px; line-height: 1.8; position: relative; overflow: hidden;
+        }
+        .info-panel::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--sky-main); }
+
+        .vendor-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            align-items: stretch; 
+        }
+
+        /* 卡片本體與高級互動特效 */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--glass-highlight), var(--glass-shadow);
+            display: flex;
+            flex-direction: column; 
+            height: 100%; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+            position: relative;
+        }
+        .card:hover { 
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 20px 40px rgba(3, 155, 229, 0.25), inset 0 0 0 1px var(--sky-main); 
+            border-color: var(--sky-main);
+            background: #FFFFFF; 
+            z-index: 2;
+        }
+
+        /* 卡片標題區：自動填滿剩餘高度 */
+        .card-header {
+            padding: 25px 25px 20px;
+            position: relative;
+            border-bottom: 1px solid rgba(3, 155, 229, 0.1);
+            min-height: 90px; 
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .card-header::before { content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 4px; background: var(--sky-main); }
+        
+        /* 公司名稱 - 恢復動態特效 */
+        .company-name {
+            font-size: 19px;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            white-space: normal; 
+            background: linear-gradient(90deg, var(--sky-dark), var(--sky-main), #81D4FA, var(--sky-dark));
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradientFlow 4s ease-in-out infinite; 
+        }
+        .company-suffix {
+            color: var(--text-muted); font-size: 11px; margin: 6px 0 0 0;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+
+        /* 卡片圖片區：固定高度與 hover 微藍色遮罩 */
+        .card-img-container { 
+            width: 100%; height: 200px; overflow: hidden; position: relative; flex-shrink: 0; 
+        }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .card:hover .card-img { transform: scale(1.08); }
+        .card-img-container::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(3, 155, 229, 0.15); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+        }
+        .card:hover .card-img-container::after { opacity: 1; }
+
+        /* 卡片底部區 */
+        .card-footer {
+            display: flex;
+            height: 70px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.7);
+            flex-shrink: 0; 
+        }
+        .footer-left, .footer-mid {
+            display: flex; flex-direction: column; justify-content: center;
+            padding: 0 15px; border-right: 1px solid rgba(0,0,0,0.05);
+        }
+        .footer-left { width: 45%; }
+        .footer-mid { width: 35%; }
+        .footer-label { font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; font-weight: 600; }
+        .footer-value { font-size: 14px; color: var(--sky-dark); font-weight: 800; font-family: 'Montserrat', sans-serif; white-space: nowrap; }
+        .footer-right { width: 20%; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+        .card:hover .footer-right { background: rgba(3, 155, 229, 0.1); }
+        .view-btn {
+            text-decoration: none; color: var(--sky-main); font-size: 16px;
+            width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+            background: #FFFFFF; border-radius: 50%; box-shadow: 0 2px 8px rgba(3,155,229,0.2); transition: all 0.3s ease;
+        }
+        .card:hover .view-btn { transform: translateX(3px); background: var(--sky-main); color: #FFFFFF; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; padding: 14px 30px; margin: 20px 15px 0 0;
+            border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 15px; transition: all 0.3s ease;
+            background: var(--sky-main); color: #FFF; box-shadow: 0 4px 15px rgba(3, 155, 229, 0.4);
+        }
+        .btn-primary:hover { background: var(--sky-dark); transform: translateY(-3px); }
+        .btn-primary i { margin-right: 8px; }
+
+        .glass-footer {
+            text-align: center; padding: 30px; background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.8);
+            color: var(--text-muted); font-size: 14px; position: relative; z-index: 10;
+        }
+
+        @media (max-width: 1200px) { .vendor-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .vendor-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .vendor-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="skyline-bg"></div>
+
+    <nav class="glass-nav">
+        <a href="#home" class="nav-logo">IMTS 2026</a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <div class="dropdown">
+                <a href="#advanced-machine-tools" class="dropbtn">Exhibitors <i class="fa-solid fa-angle-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#advanced-machine-tools">Advanced Machine Tools</a>
+                    <a href="#precision-components">Precision Components & Solutions</a>
+                    <a href="#smart-automation">Smart Automation & Digital Mfg</a>
+                </div>
+            </div>
+            <!-- 保留 Venue 與 TAITRA 導覽列選項 -->
+            <a href="#venue">Venue</a>
+            <a href="#taitra">TAITRA</a>
+        </div>
+    </nav>
+
+    <header class="hero-banner" id="home">
+        <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=1920&q=80" alt="IMTS Exhibition Theme">
+        <div class="hero-content">
+            <h1>IMTS 2026</h1>
+            <p>International Manufacturing Technology Show</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- ==========================================
+             分類一: Advanced Machine Tools 
+        =========================================== -->
+        <section id="advanced-machine-tools">
+            <h2 class="section-title">Advanced Machine Tools</h2>
+            <div class="vendor-grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">AXISCO</h2>
+                        <p class="company-suffix">PRECISION MACHINERY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=600&q=80" alt="AXISCO" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.twaxisco.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">BIG STONE</h2>
+                        <p class="company-suffix">MACHINERY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80" alt="BIG STONE" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.bigstone.com.tw" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">CISFUN</h2>
+                        <p class="company-suffix">TECHNOLOGY CORP.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80" alt="CISFUN" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.likest.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">JIUH-YEH</h2>
+                        <p class="company-suffix">PRECISION MACHINERY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <!-- 置換成全新且保證有效的 CNC 銑床工業圖片 -->
+                        <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80" alt="JIUH-YEH" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.jiuhyeh.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">KAO MING</h2>
+                        <p class="company-suffix">MACHINERY INDUSTRIAL CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80" alt="KAO MING" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.kaoming.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">OSCAR E.D.M.</h2>
+                        <p class="company-suffix">COMPANY LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=600&q=80" alt="OSCAR EDM" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.oscaredm.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">PALMARY</h2>
+                        <p class="company-suffix">MACHINERY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=600&q=80" alt="PALMARY" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.palmary.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">PAO FONG</h2>
+                        <p class="company-suffix">INDUSTRY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80" alt="PAO FONG" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.paofong.com.tw" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">Rayder</h2>
+                        <p class="company-suffix">Machinery Corporation</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Rayder" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="https://www.focaseiki.com.tw/" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">TOA DR</h2>
+                        <p class="company-suffix">ENTERPRISE CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=600&q=80" alt="TOA DR" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="https://www.slitterline.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================
+             分類二: Precision Components 
+        =========================================== -->
+        <section id="precision-components">
+            <h2 class="section-title">Precision Components & Solutions</h2>
+            <div class="vendor-grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">AURORAL SINTER</h2>
+                        <p class="company-suffix">METALS CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="AURORAL SINTER" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.auroral-sinter.com.tw" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">BRIGHT JING CHIN</h2>
+                        <p class="company-suffix">MACHINERY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <!-- 置換成全新且保證有效的工業金屬零件/機床圖片 -->
+                        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=600&q=80" alt="BRIGHT JING CHIN" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.bmgroup.com.tw" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">EANG LIAN</h2>
+                        <p class="company-suffix">CORPORATION</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1533090368676-1fd25485db88?auto=format&fit=crop&w=600&q=80" alt="EANG LIAN" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.unionbrush.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">FLYING RAYS</h2>
+                        <p class="company-suffix">INTERNATIONAL TRADE CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=600&q=80" alt="FLYING RAYS" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.flying-rays.com" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">SUPER AIR</h2>
+                        <p class="company-suffix">COMPRESSOR TECHNOLOGY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="SUPER AIR" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="https://www.superairtw.com/" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">THETA</h2>
+                        <p class="company-suffix">PRECISION CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=600&q=80" alt="THETA PRECISION" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.theta-spindle.com/ch_company.asp" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">TSENSE</h2>
+                        <p class="company-suffix">TECHNOLOGY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" alt="TSENSE" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="https://tsense-tw.com/" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">VERNAL</h2>
+                        <p class="company-suffix">MANUFACTURING & ENGINEERING CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80" alt="VERNAL" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.vernal.tw" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================
+             分類三: Smart Automation & Digital Mfg 
+        =========================================== -->
+        <section id="smart-automation">
+            <h2 class="section-title">Smart Automation & Digital Manufacturing</h2>
+            <div class="vendor-grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">SYNTEC</h2>
+                        <p class="company-suffix">TECHNOLOGY CO., LTD.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="SYNTEC" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="http://www.syntecclub.com.tw" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="company-name">Tenpro</h2>
+                        <p class="company-suffix">Advanced Technologies Co., Ltd.</p>
+                    </div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Tenpro" class="card-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-left"><span class="footer-label">Building</span><span class="footer-value">North Lvl 3</span></div>
+                        <div class="footer-mid"><span class="footer-label">Booth</span><span class="footer-value">236834</span></div>
+                        <div class="footer-right"><a href="https://www.tenprotech.com/" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="glass-footer">
+        <p>© 2026 Taiwan Exhibitors at IMTS. All rights reserved. | Empowered by TAITRA</p>
+    </footer>
+
+</body>
+</html>
